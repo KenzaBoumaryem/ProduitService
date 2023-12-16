@@ -31,5 +31,13 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: Run Test
       run: mvn test
+    - name: Build And Push Docker Image
+      uses: mr-smithers-excellent/docker-build-push@v6
+      with:
+        image: kenzaboumaryem/productservice
+        registry: docker.io
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+     
 
   
